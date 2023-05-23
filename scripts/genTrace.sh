@@ -14,6 +14,7 @@ for f in $FILES
     done
 
 for f in $FILES
+    do
         python3 tragen_cli.py -c ${f::-7}".config" &
         ((COUNT++))
         if [ $COUNT -eq 4 ]
