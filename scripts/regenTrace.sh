@@ -7,7 +7,8 @@ COUNTMAX="$1"
 
 for f in $FILES
     do
-        if [ ! -e "/mydata/traces/"${f::-7}".txt" ]; then
+        NAME=$(basename "$f")  # Extract the filename with extension
+        if [ ! -e "/mydata/traces/"${NAME%.*}".txt" ]; then
 
             python3 tragen_cli.py -c ${f::-7}".config" &
             ((COUNT++))
