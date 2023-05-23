@@ -275,14 +275,15 @@ class TraceGenerator():
                         self.curr_iter = i                    
 
 
-        traffic_classes = ":".join([str(x) for x in self.trafficMixer.trafficClasses])
-        if not os.path.exists("./OUTPUT/" + str(traffic_classes)):            
-            os.mkdir("./OUTPUT/" + str(traffic_classes))
-            
-        f = open("./OUTPUT/" + str(traffic_classes) + "/gen_sequence.txt", "w")
+        # traffic_classes = ":".join([str(x) for x in self.trafficMixer.trafficClasses])
+        # if not os.path.exists("./OUTPUT/" + str(traffic_classes)):            
+        #     os.mkdir("./OUTPUT/" + str(traffic_classes))
 
-        with open("./OUTPUT/" + str(traffic_classes) + "/command.txt", 'w') as fp:
-            fp.write('\n'.join(sys.argv[1:]))
+        f = open("OUTPUT/"+self.args.name, "w")
+        # f = open("./OUTPUT/" + str(traffic_classes) + "/gen_sequence.txt", "w")
+
+        # with open("./OUTPUT/" + str(traffic_classes) + "/command.txt", 'w') as fp:
+        #     fp.write('\n'.join(sys.argv[1:]))
             
         ## Assign timestamp based on the byte-rate of the FD
         self.assign_timestamps(c_trace, sizes, pfd.byte_rate, f)

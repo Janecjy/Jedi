@@ -47,6 +47,7 @@ def show_example():
 ## Fill the arguments as entered by the user.
 class Arguments():
     def __init__(self):
+        self.name            = ""
         self.traffic_classes = ""
         self.traffic_ratio   = ""
         self.length          = 100000000
@@ -72,6 +73,10 @@ def read_config_file(config_file):
 
     args = Arguments()
 
+    ## Config name
+    args.name = config_file.split('/')[-1].split('.')[0]+".txt"
+    print("Output name: {}".format(args.name))
+    
     ## Trace length
     args.length = config["Trace_length"]
     if args.length.isnumeric() == False or int(args.length) <= 0:

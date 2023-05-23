@@ -3,9 +3,18 @@
 BASEDIR=$(pwd)
 FILES="$BASEDIR/config/*"
 COUNT=0
+mkdir -p /mydata/traces/
 for f in $FILES
     do
-        python3 tragen_cli.py -c $f &
+        for ((i=0; i<10; i++))
+        do
+            cp $f ${f::-7}-$i".config"
+            echo ${f::-7}-$i".config"
+        done
+    done
+
+for f in $FILES
+        python3 tragen_cli.py -c ${f::-7}".config" &
         ((COUNT++))
         if [ $COUNT -eq 4 ]
             then
@@ -13,4 +22,9 @@ for f in $FILES
                 COUNT=0
                 mv OUTPUT/* /mydata/traces/
         fi
+        # done
     done
+wait
+mv OUTPUT/* /mydata/traces/
+rm -rf /mydata/traces/debug.txt
+rm -rf /mydata/traces/logfile.txt
