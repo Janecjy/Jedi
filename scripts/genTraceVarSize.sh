@@ -2,7 +2,7 @@
 
 FILES="/mydata/traces/*"
 COUNT=0
-COUNTMAX=10
+COUNTMAX=$1
 for r in 2 5 10
 do
     mkdir -p "/mydata/traces-"$r"x"
