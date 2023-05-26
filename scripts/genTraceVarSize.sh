@@ -9,7 +9,7 @@ do
     for f in $FILES
     do
         NAME=$(basename "$f")  # Extract the filename with extension
-        if [ ! -e "/mydata/traces-"$r"x/"${NAME%.*}".txt" ] && ! pgrep -f $NAME; then
+        if [ ! -e "/mydata/traces-"$r"x/"${NAME%.*}".txt" ] && ! pgrep -f $NAME && [[ $(wc -l < $f) -eq 100000000 ]]; then
 
             python3 scripts/genTraceVarSize.py $r $f "/mydata/traces-"$r"x/"${NAME%.*}".txt" &
             ((COUNT++))
