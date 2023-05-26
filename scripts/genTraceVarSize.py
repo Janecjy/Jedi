@@ -25,7 +25,7 @@ def multiply_files(input_file_path, output_file_path, ratio):
             output_file.write(f'{column1},{column2},{multiplied_value}\n')
 
 # Example usage
-ratio = sys.argv[1]
+ratio = int(sys.argv[1])
 input_file_path = sys.argv[2]
 output_file_path = sys.argv[3]
 
