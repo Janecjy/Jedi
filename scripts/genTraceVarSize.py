@@ -19,7 +19,7 @@ def multiply_files(input_file_path, output_file_path, ratio):
             random_value = random.randint(1, 2*ratio)
 
             # Multiply the value in the third column by the random value
-            multiplied_value = str(float(columns[2]) * random_value)
+            multiplied_value = str(int(columns[2]) * random_value)
 
             # Write the modified row to the output file
             output_file.write(f'{column1},{column2},{multiplied_value}\n')
