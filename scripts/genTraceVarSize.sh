@@ -6,7 +6,7 @@ COUNTMAX=$1
 IMP=$2 # 0 for float, 1 for int, 2 for noise
 for r in 2 5 10
 do
-    mkdir -p "/mydata/traces-"$r"x-"$IMP"
+    mkdir -p "/mydata/traces-"$r"x-"$IMP
     for f in $FILES
     do
         NAME=$(basename "$f")  # Extract the filename with extension
