@@ -13,14 +13,14 @@ do
         if [[ ! -e "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" || ! $(wc -l < "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt") -eq 100000000 ]] && ! pgrep -f $NAME && [[ $(wc -l < $f) -eq 100000000 ]]; then
             rm "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
             if [ $IMP -eq 0 ]; then
-                echo "0/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
-                # python3 scripts/genTraceVarSize.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
+                # echo "0/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
+                python3 scripts/genTraceVarSize.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
             elif [ $IMP -eq 1 ]; then
-                echo "1/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
-                # python3 scripts/genTraceVarSizeInt.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
+                # echo "1/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
+                python3 scripts/genTraceVarSizeInt.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
             else
-                echo "2/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
-                # python3 scripts/genTraceVarSizeNoise.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
+                # echo "2/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt"
+                python3 scripts/genTraceVarSizeNoise.py $r $f "/mydata/traces-"$r"x-"$IMP"/"${NAME%.*}".txt" &
             fi
             ((COUNT++))
             if [ $COUNT -eq $COUNTMAX ]
