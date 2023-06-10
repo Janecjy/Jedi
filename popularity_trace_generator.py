@@ -47,7 +47,7 @@ class TraceGenerator():
         for i in range(len(self.OWV)-1):
             P              = self.popularity_dsts[trafficClasses[i]]
             P_SZ           = self.popularity_sz_dsts[trafficClasses[i]]            
-            n_popularities = P.sample_keys(int(20*MIL * self.OWV[i]))
+            n_popularities = P.sample_keys(int(35*MIL * self.OWV[i]))
             n_sizes        = []
 
             for p in n_popularities:
@@ -60,7 +60,7 @@ class TraceGenerator():
             
         P_SZ = self.popularity_sz_dsts[trafficClasses[i+1]]
         P    = self.popularity_dsts[trafficClasses[i+1]]
-        n_popularities = P.sample_keys(int(20*MIL) - len(popularities))
+        n_popularities = P.sample_keys(int(35*MIL) - len(popularities))
         n_sizes = []
         for p in n_popularities:
             sz = P_SZ.sample(p)
