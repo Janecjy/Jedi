@@ -1,1 +1,1 @@
-./genVarSizeJob.sh
+./genVarSizeJob.sh > genVarSize_job
