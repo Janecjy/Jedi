@@ -8,9 +8,7 @@ do
     for f in $FILES
     do
         NAME=$(basename "$f")  # Extract the filename with extension
-        if [[ ! -e $BASE_DIR"traces-"$r"x/"${NAME%.*}".txt" || ! $(wc -l < $BASE_DIR"traces-"$r"x/"${NAME%.*}".txt") -eq 100000000 ]] && ! pgrep -f $NAME && [[ $(wc -l < $f) -eq 100000000 ]]; then
-            echo "python3 scripts/genTraceVarSizeNoise.py "$r" "$f" "$BASE_DIR"traces-"$r"x/"${NAME%.*}".txt" &
-        fi
+        echo "python3 genTraceVarSizeNoise.py "$r" "$f" "$BASE_DIR"traces-"$r"x/"${NAME%.*}".txt" &
     done
 wait
 done
